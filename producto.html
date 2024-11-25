@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html">
+            <img class="header_logo" src="img/logo.png" alt="logostore">
+        </a>
+    </header>
+
+    <div class="nav-bg">
+        <nav class="navegacion_principal contenedor">
+            <a class="navegacion_enlace" href="index.html">Inicio</a>
+            <a class="navegacion_enlace" href="tienda.html">Tienda</a>
+            <a class="navegacion_enlace" href="nosotros.html">Nosotros</a>
+            <a class="navegacion_enlace" href="contacto.html">Contacto</a>
+        </nav>
+    </div>
+
+    <main class="contenedor">
+        <h1>Detalles del Producto</h1>
+        <div class="producto-detalle">
+            <img id="producto-imagen" class="producto_imagen" src="" alt="Producto seleccionado">
+            <div class="producto_informacion">
+                <p id="producto-nombre" class="producto_nombre"></p>
+                <p id="producto-precio" class="producto_precio"></p>
+                <button class="boton-carrito">Añadir al carrito</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">DaniSTore todos los derechos reservados</footer>
+
+    <script>
+        // Datos de los productos
+        const productos = [
+            { id: 1, nombre: "Portátil Acer, 8 GB Ram, AMD Raizen 5, 512 SSD", precio: "$1'850.000", imagen: "img/1.jpeg" },
+            { id: 2, nombre: "PC Lenovo 8 GB RAM, Intel Core i5, 1TB SSD", precio: "$2'250.000", imagen: "img/2.jpeg" },
+            { id: 3, nombre: "Silla Gamer Rosa y Negro", precio: "$180.000", imagen: "img/3.jpg" },
+            { id: 4, nombre: "Conjunto 3 pantallas 20\" para PC", precio: "$1'200.000", imagen: "img/4.jpg" },
+            { id: 5, nombre: "Portátil Lenovo, 12 GB Ram, Intel Core i7, 512 SSD", precio: "$2'950.000", imagen: "img/5.jpg" },
+            { id: 6, nombre: "Portátil Gaming RTX 2010, 16 GB Ram, AMD Raizen 9, 512 SSD", precio: "$4'299.000", imagen: "img/6.jpg" },
+            { id: 7, nombre: "CPU Gamer, 32 GB Ram, NVidia RTX 4200, Intel Core i9, 2 TB SSD", precio: "$5'650.000", imagen: "img/7.jpg" },
+            { id: 8, nombre: "Portátil Acer 4 GB Ram, Intel Core i3, 1 TB SSD", precio: "$1'650.000", imagen: "img/8.jpg" },
+            { id: 9, nombre: "Cabina para PC Gamer + AMD Vidia RTX 3200", precio: "$1'450.000", imagen: "img/9.jpg" },
+            { id: 10, nombre: "Portátil Acer 8 GB Ram, Amd Raizen 5, 256 GB HDD", precio: "$1'699.000", imagen: "img/10.jpg" },
+            { id: 11, nombre: "Portátil Gaming, 12 GB RAM, NVidia RTX 2100, Amd Raizen 9, 1TB SSD", precio: "$4'850.000", imagen: "img/11.jpg" }
+        ];
+
+        // Obtener el ID del producto desde la URL
+        const params = new URLSearchParams(window.location.search);
+        const idProducto = parseInt(params.get('id'), 10);
+
+        // Buscar el producto correspondiente
+        const producto = productos.find(p => p.id === idProducto);
+
+        // Mostrar la información del producto en la página
+        if (producto) {
+            document.getElementById('producto-imagen').src = producto.imagen;
+            document.getElementById('producto-nombre').textContent = producto.nombre;
+            document.getElementById('producto-precio').textContent = producto.precio;
+        } else {
+            document.querySelector('main').innerHTML = '<p>Producto no encontrado.</p>';
+        }
+    </script>
+</body>
+</html>
